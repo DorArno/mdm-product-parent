@@ -99,6 +99,12 @@
 			<if test="ordernumber!=null and ordernumber.length>0">
 				and INSTR(OrderNumber,#{ordernumber})>0
 			</if>
+			<if test="startDate!=null and startDate.length>0">
+				and ModifiedOn &gt;= #{startDate}
+			</if>
+			<if test="endDate!=null and endDate.length>0">
+				and ModifiedOn &lt;= #{endDate}
+			</if>
 
 		</where>
 	</select>
