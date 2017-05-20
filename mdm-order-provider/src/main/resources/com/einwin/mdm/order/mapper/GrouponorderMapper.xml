@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.einwin.mdm.order.mapper.GrouponorderMapper">
+    <resultMap id="BaseResultMap" type="com.einwin.mdm.order.model.Grouponorder">
+        <id column="Id" jdbcType="VARCHAR" property="id" />
+        <result column="OrderNum" jdbcType="VARCHAR" property="ordernum" />
+        <result column="StatusCode" jdbcType="VARCHAR" property="statuscode" />
+        <result column="GrouponId" jdbcType="VARCHAR" property="grouponid" />
+        <result column="CustomerId" jdbcType="VARCHAR" property="customerid" />
+        <result column="OrderType" jdbcType="INTEGER" property="ordertype" />
+        <result column="PlatformCode" jdbcType="VARCHAR" property="platformcode" />
+        <result column="RecieverName" jdbcType="VARCHAR" property="recievername" />
+        <result column="RecieverPhoneNumber" jdbcType="VARCHAR" property="recieverphonenumber" />
+        <result column="RecieveAddress" jdbcType="VARCHAR" property="recieveaddress" />
+        <result column="UnitPrice" jdbcType="DECIMAL" property="unitprice" />
+        <result column="OrderCount" jdbcType="INTEGER" property="ordercount" />
+        <result column="SumPrice" jdbcType="DECIMAL" property="sumprice" />
+        <result column="Subscription" jdbcType="DECIMAL" property="subscription" />
+        <result column="SpareMoney" jdbcType="DECIMAL" property="sparemoney" />
+        <result column="SpareMoneyOrderNum" jdbcType="VARCHAR" property="sparemoneyordernum" />
+        <result column="PaymentStatusCode" jdbcType="VARCHAR" property="paymentstatuscode" />
+        <result column="PaymentMethodTypeCode" jdbcType="VARCHAR" property="paymentmethodtypecode" />
+        <result column="Remark" jdbcType="VARCHAR" property="remark" />
+        <result column="CommunityId" jdbcType="VARCHAR" property="communityid" />
+        <result column="TagName" jdbcType="VARCHAR" property="tagname" />
+        <result column="PointAmount" jdbcType="DECIMAL" property="pointamount" />
+        <result column="CouponsPrice" jdbcType="DECIMAL" property="couponsprice" />
+        <result column="PromotionPrice" jdbcType="DECIMAL" property="promotionprice" />
+        <result column="Logistics" jdbcType="VARCHAR" property="logistics" />
+        <result column="LogisticsNo" jdbcType="VARCHAR" property="logisticsno" />
+        <result column="IsDeleted" jdbcType="BIT" property="isdeleted" />
+        <result column="CreatedBy" jdbcType="VARCHAR" property="createdby" />
+        <result column="CreatedOn" jdbcType="TIMESTAMP" property="createdon" />
+        <result column="ModifiedBy" jdbcType="VARCHAR" property="modifiedby" />
+        <result column="ModifiedOn" jdbcType="TIMESTAMP" property="modifiedon" />
+        <result column="RowVersion" jdbcType="TIMESTAMP" property="rowversion" />
+    </resultMap>
+    <sql id="BaseTable">
+        GrouponOrder
+    </sql>
+    <!--<sql id="BaseColumns">-->
+    <!--</sql>-->
+    <!--<sql id="GenerationType">-->
+    <!--DB_UUID ( select replace(uuid(),'-','') from dual )-->
+    <!--</sql>-->
+    
+    <insert id="insert">
+    	insert into GrouponOrder(
+			  Id,
+			  OrderNum,
+			  StatusCode,
+			  GrouponId,
+			  CustomerId,
+			  OrderType,
+			  PlatformCode,
+			  RecieverName,
+			  RecieverPhoneNumber,
+			  RecieveAddress,
+			  UnitPrice,
+			  OrderCount,
+			  SumPrice,
+			  Subscription,
+			  SpareMoney,
+			  SpareMoneyOrderNum,
+			  PaymentStatusCode,
+			  PaymentMethodTypeCode,
+			  Remark,
+			  CommunityId,
+			  TagName,
+			  PointAmount,
+			  CouponsPrice,
+			  PromotionPrice,
+			  Logistics,
+			  LogisticsNo,
+			  IsDeleted,
+			  CreatedBy,
+			  CreatedOn,
+			  ModifiedBy,
+			  ModifiedOn,
+			  RowVersion
+		) values(
+			  #{id},
+			  #{ordernum},
+			  #{statuscode},
+			  #{grouponid},
+			  #{customerid},
+			  #{ordertype},
+			  #{platformcode},
+			  #{recievername},
+			  #{recieverphonenumber},
+			  #{recieveaddress},
+			  #{unitprice},
+			  #{ordercount},
+			  #{sumprice},
+			  #{subscription},
+			  #{sparemoney},
+			  #{sparemoneyordernum},
+			  #{paymentstatuscode},
+			  #{paymentmethodtypecode},
+			  #{remark},
+			  #{communityid},
+			  #{tagname},
+			  #{pointamount},
+			  #{couponsprice},
+			  #{promotionprice},
+			  #{logistics},
+			  #{logisticsno},
+			  #{isdeleted},
+			  #{createdby},
+			  #{createdon},
+			  #{modifiedby},
+			  #{modifiedon},
+			  #{rowversion}
+		)
+    		
+    </insert>
+
+    <select id="search" resultMap="BaseResultMap">
+        select <include refid="BaseColumns" />
+        from <include refid="BaseTable" />
+    </select>
+</mapper>

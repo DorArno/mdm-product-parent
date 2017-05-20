@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.einwin.mdm.order.mapper.OrderitemMapper">
+    <resultMap id="BaseResultMap" type="com.einwin.mdm.order.model.Orderitem">
+        <id column="Id" jdbcType="VARCHAR" property="id" />
+        <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+        <result column="SKUId" jdbcType="VARCHAR" property="skuid" />
+        <result column="ProductId" jdbcType="VARCHAR" property="productid" />
+        <result column="ProductName" jdbcType="VARCHAR" property="productname" />
+        <result column="Quantity" jdbcType="INTEGER" property="quantity" />
+        <result column="UnitPrice" jdbcType="DECIMAL" property="unitprice" />
+        <result column="PointAmount" jdbcType="DECIMAL" property="pointamount" />
+        <result column="CouponsPrice" jdbcType="DECIMAL" property="couponsprice" />
+        <result column="PromotionPrice" jdbcType="DECIMAL" property="promotionprice" />
+        <result column="IsReturn" jdbcType="BIT" property="isreturn" />
+        <result column="ReturnNum" jdbcType="INTEGER" property="returnnum" />
+        <result column="OrderStatuCode" jdbcType="VARCHAR" property="orderstatucode" />
+        <result column="Logistics" jdbcType="VARCHAR" property="logistics" />
+        <result column="LogisticsNo" jdbcType="VARCHAR" property="logisticsno" />
+        <result column="IsDeleted" jdbcType="BIT" property="isdeleted" />
+        <result column="CreatedBy" jdbcType="VARCHAR" property="createdby" />
+        <result column="CreatedOn" jdbcType="TIMESTAMP" property="createdon" />
+        <result column="ModifiedBy" jdbcType="VARCHAR" property="modifiedby" />
+        <result column="ModifiedOn" jdbcType="TIMESTAMP" property="modifiedon" />
+    </resultMap>
+    <sql id="BaseTable">
+        OrderItem
+    </sql>
+    <!--<sql id="BaseColumns">-->
+    <!--</sql>-->
+    <!--<sql id="GenerationType">-->
+    <!--DB_UUID ( select replace(uuid(),'-','') from dual )-->
+    <!--</sql>-->
+    <insert id="insert">
+    	insert into OrderItem(
+	    	 Id,
+	  		 OrderId,
+	  		 SKUId,
+	  		 ProductId,
+	  		 ProductName,
+	  		 Quantity,
+	  	     UnitPrice,
+	  		 PointAmount,
+	  		 CouponsPrice,
+	  		 PromotionPrice,
+	  		 IsReturn,
+	  		 ReturnNum,
+	  		 OrderStatuCode,
+	  		 Logistics,
+	  		 LogisticsNo,
+	  		 IsDeleted,
+	  		 CreatedBy,
+	  		 CreatedOn,
+	  		 ModifiedBy,
+	  		 ModifiedOn)
+  		 values
+  		 (
+	  		 #{id},
+	  		 #{orderid},
+	  		 #{skuid},
+	  		 #{productid},
+	  		 #{productname},
+	  		 #{quantity},
+	  	     #{unitprice},
+	  		 #{pointamount},
+	  		 #{couponsprice},
+	  		 #{promotionprice},
+	  		 #{isreturn},
+	  		 #{returnnum},
+	  		 #{orderstatucode},
+	  		 #{logistics},
+	  		 #{logisticsno},
+	  		 #{isdeleted},
+	  		 #{createdby},
+	  		 #{createdon},
+	  		 #{modifiedby},
+	  		 #{modifiedon}
+  		 )
+    </insert>
+
+    <select id="search" resultMap="BaseResultMap">
+        select <include refid="BaseColumns" />
+        from <include refid="BaseTable" />
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mdm-order-api" />
+        <module name="mdm-order-client" />
+        <module name="mdm-order-provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mdm-order-api" target="1.8" />
+      <module name="mdm-order-client" target="1.8" />
+      <module name="mdm-order-parent" target="1.8" />
+      <module name="mdm-order-provider" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

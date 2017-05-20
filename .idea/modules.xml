@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mdm-order-api/mdm-order-api.iml" filepath="$PROJECT_DIR$/mdm-order-api/mdm-order-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mdm-order-client/mdm-order-client.iml" filepath="$PROJECT_DIR$/mdm-order-client/mdm-order-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mdm-order-parent.iml" filepath="$PROJECT_DIR$/mdm-order-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mdm-order-provider/mdm-order-provider.iml" filepath="$PROJECT_DIR$/mdm-order-provider/mdm-order-provider.iml" />
+    </modules>
+  </component>
+</project>

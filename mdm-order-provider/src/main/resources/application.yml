@@ -1,0 +1,114 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname:10.11.21.9}:${eureka.server.port:18761}/eureka/
+  instance:
+    prefer-ip-address: true
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 30000
+        requestVolumeThreshold: 50
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          semaphore:
+            maxConcurrentRequests: 50
+          thread:
+            timeoutInMilliseconds: 100000
+
+spring:
+  output:
+    ansi:
+      enabled: detect
+  main:
+    #bannerMode: log
+
+
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+  messages:
+    basename: i18n/messages
+    cache-seconds: -1
+    encoding: utf-8
+
+  datasource:
+    poolName: ${spring.application.name}
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.11.21.7:3306/mdm_order_dev?relaxAutoCommit=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: mdm
+    password: Ccpg-test1
+    autoCommit: false
+    minIdle: 5
+    maximumPoolSize: 20
+    connectionInitSql: select 1
+    hikari:
+      idle-timeout: 10000
+  mvc:
+    favicon:
+      enabled: false
+  activemq:
+    broker-url: failover:(tcp://10.11.21.5:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=6
+    user:
+    password:
+    in-memory: true
+    pool:
+      enabled: false
+  redis:
+    host: 10.11.21.5
+    password:
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
+    timeout: 10000
+
+#skip.remote.servers:all
+
+#security:
+ # oauth2:
+  #  client:
+   #   clientId: account-service
+    #  clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
+     # accessTokenUri: http://auth-service:5000/uaa/oauth/token
+      #grant-type: client_credentials
+      #scope: server
+    #resource:
+     # user-info-uri: http://auth-service:5000/uaa/users/current
+
+management.security.enabled: false
+security:
+  basic:
+    enabled: false
+  oauth2:
+    resource:
+      loadBalanced: true
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnGp/Q5lh0P8nPL21oMMrt2RrkT9AW5jgYwLfSUnJVc9G6uR3cXRRDCjHqWU5WYwivcF180A6CWp/ireQFFBNowgc5XaA0kPpzEtgsA5YsNX7iSnUibB004iBTfU9hZ2Rbsc8cWqynT0RyN4TP1RYVSeVKvMQk4GT1r7JCEC+TNu1ELmbNwMQyzKjsfBXyIOCFU/E94ktvsTZUHF4Oq44DBylCDsS1k7/sfZC2G5EU7Oz0mhG8+Uz6MSEQHtoIi6mc8u64Rwi3Z3tscuWG2ShtsUFuNSAFNkY7LkLn+/hxLCu2bNISMaESa8dG22CIMuIeRLVcAmEWEWH5EEforTg+QIDAQAB
+          -----END PUBLIC KEY-----
+  sessions: stateless
+
+server:
+  port: 8091
+  context-path: /
+  compression:
+    enabled: true
+
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
+    mapperLocations: classpath*:com/einwin/mdm/order/mapper/*.xml

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.einwin.mdm.order.mapper.ServiceorderMapper">
+    <resultMap id="BaseResultMap" type="com.einwin.mdm.order.model.Serviceorder">
+        <id column="Id" jdbcType="VARCHAR" property="id" />
+        <result column="OrderNumber" jdbcType="VARCHAR" property="ordernumber" />
+        <result column="ServiceId" jdbcType="VARCHAR" property="serviceid" />
+        <result column="CustomerId" jdbcType="VARCHAR" property="customerid" />
+        <result column="ReceiverName" jdbcType="VARCHAR" property="receivername" />
+        <result column="ReceiverPhoneNumber" jdbcType="VARCHAR" property="receiverphonenumber" />
+        <result column="ReceiverAddress" jdbcType="VARCHAR" property="receiveraddress" />
+        <result column="CommunityId" jdbcType="VARCHAR" property="communityid" />
+        <result column="OrderTime" jdbcType="TIMESTAMP" property="ordertime" />
+        <result column="PlatformCode" jdbcType="VARCHAR" property="platformcode" />
+        <result column="ServiceStaffId" jdbcType="VARCHAR" property="servicestaffid" />
+        <result column="ServiceStaffName" jdbcType="VARCHAR" property="servicestaffname" />
+        <result column="ConfirmTime" jdbcType="TIMESTAMP" property="confirmtime" />
+        <result column="ServiceTime" jdbcType="TIMESTAMP" property="servicetime" />
+        <result column="OrderPrice" jdbcType="DECIMAL" property="orderprice" />
+        <result column="OrderStatusCode" jdbcType="VARCHAR" property="orderstatuscode" />
+        <result column="FinishedTime" jdbcType="TIMESTAMP" property="finishedtime" />
+        <result column="PaymentStatusCode" jdbcType="VARCHAR" property="paymentstatuscode" />
+        <result column="PaymentMethodTypeCode" jdbcType="VARCHAR" property="paymentmethodtypecode" />
+        <result column="MaterialPay" jdbcType="DECIMAL" property="materialpay" />
+        <result column="ServiceOrderPay" jdbcType="DECIMAL" property="serviceorderpay" />
+        <result column="CouponsPrice" jdbcType="DECIMAL" property="couponsprice" />
+        <result column="PromotionPrice" jdbcType="DECIMAL" property="promotionprice" />
+        <result column="PointAmount" jdbcType="DECIMAL" property="pointamount" />
+        <result column="PreServiceTime" jdbcType="TIMESTAMP" property="preservicetime" />
+        <result column="ModifiedOn" jdbcType="TIMESTAMP" property="modifiedon" />
+        <result column="IsDeleted" jdbcType="BIT" property="isdeleted" />
+        <result column="CreatedBy" jdbcType="VARCHAR" property="createdby" />
+        <result column="CreatedOn" jdbcType="TIMESTAMP" property="createdon" />
+        <result column="ModifiedBy" jdbcType="VARCHAR" property="modifiedby" />
+        <result column="RowVersion" jdbcType="TIMESTAMP" property="rowversion" />
+    </resultMap>
+    <sql id="BaseTable">
+        ServiceOrder
+    </sql>
+    
+    <insert id="insert">
+    	insert into ServiceOrder
+    	(
+    	   Id,
+		   OrderNumber,
+		   ServiceId,
+		   CustomerId,
+		   ReceiverName,
+		   ReceiverPhoneNumber,
+		   ReceiverAddress,
+		   CommunityId,
+		   OrderTime,
+		   PlatformCode,
+		   ServiceStaffId,
+		   ServiceStaffName,
+		   ConfirmTime,
+		   ServiceTime,
+		   OrderPrice,
+		   OrderStatusCode,
+		   FinishedTime,
+		   PaymentStatusCode,
+		   PaymentMethodTypeCode,
+		   MaterialPay,
+		   ServiceOrderPay,
+		   CouponsPrice,
+		   PromotionPrice,
+		   PointAmount,
+		   PreServiceTime,
+		   ModifiedOn,
+		   IsDeleted,
+		   CreatedBy,
+		   CreatedOn,
+		   ModifiedBy,
+		   RowVersion
+    	)
+    	values(
+    	   #{id},
+		   #{ordernumber},
+		   #{serviceid},
+		   #{customerid},
+		   #{receivername},
+		   #{receiverphonenumber},
+		   #{receiveraddress},
+		   #{communityid},
+		   #{ordertime},
+		   #{platformcode},
+		   #{servicestaffid},
+		   #{servicestaffname},
+		   #{confirmtime},
+		   #{servicetime},
+		   #{orderprice},
+		   #{orderstatuscode},
+		   #{finishedtime},
+		   #{paymentstatuscode},
+		   #{paymentmethodtypecode},
+		   #{materialpay},
+		   #{serviceorderpay},
+		   #{couponsprice},
+		   #{promotionprice},
+		   #{pointamount},
+		   #{preservicetime},
+		   #{modifiedon},
+		   #{isdeleted},
+		   #{createdby},
+		   #{createdon},
+		   #{modifiedby},
+		   #{rowversion}
+    	)
+    	
+    	
+    	
+    </insert>
+    <!--<sql id="BaseColumns">-->
+    <!--</sql>-->
+    <!--<sql id="GenerationType">-->
+    <!--DB_UUID ( select replace(uuid(),'-','') from dual )-->
+    <!--</sql>-->
+
+    <select id="search" resultMap="BaseResultMap">
+        select <include refid="BaseColumns" />
+        from <include refid="BaseTable" />
+    </select>
+</mapper>

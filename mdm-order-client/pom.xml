@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.einwin.mdm</groupId>
+		<artifactId>mdm-order-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>mdm-order-client</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<dependencies>
+        <dependency>
+            <groupId>com.einwin.mdm</groupId>
+            <artifactId>mdm-order-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-netflix-core</artifactId>
+			<version>1.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
+
+	</dependencies>
+</project>

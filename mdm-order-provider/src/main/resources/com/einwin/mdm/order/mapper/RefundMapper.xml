@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--退换货数据库实体-->
+<mapper namespace="com.einwin.mdm.order.mapper.RefundMapper">
+    <resultMap id="BaseResultMap" type="com.einwin.mdm.order.model.Refund">
+        <id column="Id" jdbcType="VARCHAR" property="id" />
+        <result column="OrderId" jdbcType="VARCHAR" property="orderid" />
+		<result column="OrderNumber" jdbcType="VARCHAR" property="ordernumber" />
+        <result column="OrderType" jdbcType="INTEGER" property="ordertype" />
+        <result column="OrderItemId" jdbcType="VARCHAR" property="orderitemid" />
+        <result column="Remark" jdbcType="VARCHAR" property="remark" />
+        <result column="RefundFee" jdbcType="DECIMAL" property="refundfee" />
+        <result column="RefundType" jdbcType="VARCHAR" property="refundtype" />
+        <result column="RefundNum" jdbcType="INTEGER" property="refundnum" />
+        <result column="RefundOrderNum" jdbcType="VARCHAR" property="refundordernum" />
+        <result column="StatusCode" jdbcType="VARCHAR" property="statuscode" />
+        <result column="CustomerName" jdbcType="VARCHAR" property="customername" />
+        <result column="CustomerTel" jdbcType="VARCHAR" property="customertel" />
+        <result column="RefundApplyType" jdbcType="INTEGER" property="refundapplytype" />
+        <result column="PayTypeCode" jdbcType="VARCHAR" property="paytypecode" />
+        <result column="CreatedBy" jdbcType="VARCHAR" property="createdby" />
+        <result column="ModifiedOn" jdbcType="TIMESTAMP" property="modifiedon" />
+        <result column="ModifiedBy" jdbcType="VARCHAR" property="modifiedby" />
+        <result column="IsDeleted" jdbcType="BIT" property="isdeleted" />
+        <result column="CreatedOn" jdbcType="TIMESTAMP" property="createdon" />
+        <result column="RowVersion" jdbcType="TIMESTAMP" property="rowversion" />
+    </resultMap>
+    <sql id="BaseTable">
+        Refund
+    </sql>
+
+	<!--插入退换货数据-->
+    <insert id="insert">
+    	insert into Refund(
+    		  Id,
+  			  OrderId,
+  			  OrderType,
+  			  OrderItemId,
+  			  Remark,
+  			  RefundFee,
+  			  RefundType,
+  			  RefundNum,
+  			  RefundOrderNum,
+  			  StatusCode,
+  			  CustomerName,
+  			  CustomerTel,
+  			  RefundApplyType,
+  			  PayTypeCode,
+  			  CreatedBy,
+  			  ModifiedOn,
+  			  ModifiedBy,
+  			  IsDeleted,
+  			  CreatedOn,
+  			  RowVersion,
+  			  OrderNumber
+    	) values(
+    		 #{id},
+  			 #{orderid},
+  			 #{ordertype},
+  			 #{orderitemid},
+  			 #{remark},
+  			 #{refundfee},
+  			 #{refundtype},
+  			 #{refundnum},
+  			 #{refundordernum},
+  			 #{statuscode},
+  			 #{customername},
+  			 #{customertel},
+  			 #{refundapplytype},
+  			 #{paytypecode},
+  			 #{createdby},
+  			 #{modifiedon},
+  			 #{modifiedby},
+  			 #{isdeleted},
+  			 #{createdon},
+  			 #{rowversion},
+  			 #{ordernumber}
+    	)
+    </insert>
+    <!--<sql id="BaseColumns">-->
+    <!--</sql>-->
+    <!--<sql id="GenerationType">-->
+    <!--DB_UUID ( select replace(uuid(),'-','') from dual )-->
+    <!--</sql>-->
+
+    <select id="search" resultMap="BaseResultMap">
+        select <include refid="BaseColumns" />
+        from <include refid="BaseTable" />
+    </select>
+
+	<!--查询数据库实体-->
+	<select id="query" resultMap="BaseResultMap" parameterType="com.einwin.mdm.order.bo.RefundBO">
+		select <include refid="BaseColumns" />
+		from <include refid="BaseTable" />
+		<where>
+			<if test="refundordernum!=null and refundordernum.length>0">
+				INSTR(RefundOrderNum,#{refundordernum})>0
+			</if>
+			<if test="ordernumber!=null and ordernumber.length>0">
+				and INSTR(OrderNumber,#{ordernumber})>0
+			</if>
+
+		</where>
+	</select>
+</mapper>

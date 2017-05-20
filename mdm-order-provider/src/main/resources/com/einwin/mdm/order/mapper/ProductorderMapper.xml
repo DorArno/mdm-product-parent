@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.einwin.mdm.order.mapper.ProductorderMapper">
+    <resultMap id="BaseResultMap" type="com.einwin.mdm.order.model.Productorder">
+        <id column="Id" jdbcType="VARCHAR" property="id" />
+        <result column="PlatformCode" jdbcType="VARCHAR" property="platformcode" />
+        <result column="SellerType" jdbcType="INTEGER" property="sellertype" />
+        <result column="SellerId" jdbcType="VARCHAR" property="sellerid" />
+        <result column="CustomerId" jdbcType="VARCHAR" property="customerid" />
+        <result column="CommunityId" jdbcType="VARCHAR" property="communityid" />
+        <result column="Consignee" jdbcType="VARCHAR" property="consignee" />
+        <result column="Address" jdbcType="VARCHAR" property="address" />
+        <result column="PostCode" jdbcType="VARCHAR" property="postcode" />
+        <result column="Telphone" jdbcType="VARCHAR" property="telphone" />
+        <result column="Email" jdbcType="VARCHAR" property="email" />
+        <result column="OrderStatusCode" jdbcType="VARCHAR" property="orderstatuscode" />
+        <result column="PaymentStatusCode" jdbcType="VARCHAR" property="paymentstatuscode" />
+        <result column="PaymentMethodTypeCode" jdbcType="VARCHAR" property="paymentmethodtypecode" />
+        <result column="PointAmount" jdbcType="DECIMAL" property="pointamount" />
+        <result column="OrderTotal" jdbcType="DECIMAL" property="ordertotal" />
+        <result column="CouponsTotal" jdbcType="DECIMAL" property="couponstotal" />
+        <result column="PromotionTotal" jdbcType="DECIMAL" property="promotiontotal" />
+        <result column="IsDelayedDelivery" jdbcType="BIT" property="isdelayeddelivery" />
+        <result column="PaymentDate" jdbcType="TIMESTAMP" property="paymentdate" />
+        <result column="IsDeleted" jdbcType="BIT" property="isdeleted" />
+        <result column="CreatedOn" jdbcType="TIMESTAMP" property="createdon" />
+        <result column="CreatedBy" jdbcType="VARCHAR" property="createdby" />
+        <result column="ModifiedOn" jdbcType="TIMESTAMP" property="modifiedon" />
+        <result column="ModifiedBy" jdbcType="VARCHAR" property="modifiedby" />
+        <result column="RowVersion" jdbcType="TIMESTAMP" property="rowversion" />
+        <result column="OrderNumber" jdbcType="VARCHAR" property="ordernumber" />
+    </resultMap>
+    <sql id="BaseTable">
+        ProductOrder
+    </sql>
+    <!--<sql id="BaseColumns">-->
+    <!--</sql>-->
+    <!--<sql id="GenerationType">-->
+    <!--DB_UUID ( select replace(uuid(),'-','') from dual )-->
+    <!--</sql>-->
+
+	<insert id="insert" >
+		insert into ProductOrder(
+			   Id,
+			   PlatformCode,
+			   SellerType,
+			   SellerId,
+			   CustomerId,
+			   CommunityId,
+			   Consignee,
+			   Address,
+			   PostCode,
+			   Telphone,
+			   Email,
+			   OrderStatusCode,
+			   PaymentStatusCode,
+			   PaymentMethodTypeCode,
+			   PointAmount,
+			   OrderTotal,
+			   CouponsTotal,
+			   PromotionTotal,
+			   IsDelayedDelivery,
+			   PaymentDate,
+			   IsDeleted,
+			   CreatedOn,
+			   CreatedBy,
+			   ModifiedOn,
+			   ModifiedBy,
+			   RowVersion,
+			   OrderNumber 
+		) values(
+			  #{id},
+			  #{platformcode},
+			  #{sellertype},
+			  #{sellerid},
+			  #{customerid},
+			  #{communityid},
+			  #{consignee},
+			  #{address},
+			  #{postcode},
+			  #{telphone},
+			  #{email},
+			  #{orderstatuscode},
+			  #{paymentstatuscode},
+			  #{paymentmethodtypecode},
+			  #{pointamount},
+			  #{ordertotal},
+			  #{couponstotal},
+			  #{promotiontotal},
+			  #{isdelayeddelivery},
+			  #{paymentdate},
+			  #{isdeleted},
+			  #{createdon},
+			  #{createdby},
+			  #{modifiedon},
+			  #{modifiedby},
+			  #{rowversion},
+			  #{ordernumber}
+		)
+	</insert>
+	
+    <select id="search" resultMap="BaseResultMap">
+        select <include refid="BaseColumns" />
+        from <include refid="BaseTable" />
+    </select>
+</mapper>
